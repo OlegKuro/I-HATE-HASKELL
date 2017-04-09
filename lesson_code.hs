@@ -11,7 +11,7 @@ insert x (Node left val right)
 
 -}
 data Tree a = Tr a (Tree a) (Tree a) | Nil
-	deriving Show
+	deriving (Show)
 
 height:: Tree a -> Int
 height Nil = 0
@@ -23,7 +23,7 @@ insert::(Ord a) => a -> Tree a -> Tree a
 insert var Nil = Tr var Nil Nil
 insert var (Tr el left Nil)
 	|(var >= el) = Tr el left (Tr var Nil Nil)
-	|(var < el) = Tr el (insert var left) right
+	|(var < el) = Tr el (insert var left) Nil
 insert var (Tr el Nil right)
 	|(var >= el) = Tr el Nil (insert var right)
 	|(var < el) = Tr el (Tr var Nil Nil) right
